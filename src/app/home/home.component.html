@@ -1,0 +1,68 @@
+<ng-container>
+    <app-navbar></app-navbar>
+
+    <mat-sidenav-container class="example-container">
+        <mat-sidenav #sidenav mode="side" opened class="example-sidenav" [fixedInViewport]="options.value.fixed"
+            [fixedTopGap]="options.value.top" [fixedBottomGap]="options.value.bottom">
+
+            <mat-accordion class="example-headers-align pt-2" multi>
+                <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            Category
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <ul>
+                        <li *ngFor="let cat of categories; let i = index">
+                            <mat-checkbox name="categoryFilter" [ngModelOptions]="{standalone: true}"
+                                [(ngModel)]="cat.checked" (change)="categoryCheck()">
+                                {{cat.name}}
+                            </mat-checkbox>
+                        </li>
+                    </ul>
+                </mat-expansion-panel>
+
+                <mat-expansion-panel>
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            Price
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <ul>
+                        <li *ngFor="let pri of prices; let i = index">
+                            <mat-checkbox name="priceFilter" [ngModelOptions]="{standalone: true}"
+                                [(ngModel)]="pri.checked" (change)="priceCheck()">
+                                {{pri.name}}
+                            </mat-checkbox>
+                        </li>
+                    </ul>
+                </mat-expansion-panel>
+            </mat-accordion>
+
+        </mat-sidenav>
+
+        <mat-sidenav-content [formGroup]="options">
+            <section id="products">
+                <div class="row col-md-12">
+                    <div class="col-md-4 " *ngFor="let item of filteredProducts">
+                        <mat-card class="example-card">
+                            <mat-card-header>
+                                <div mat-card-avatar class="example-header-image"></div>
+                                <mat-card-title>{{item.title | slice:0:20}}</mat-card-title>
+                                <mat-card-subtitle>{{item.category}}</mat-card-subtitle>
+                            </mat-card-header>
+                            <img id="mat-card-image" src="{{item.image}}">
+                            <mat-card-content>
+                                <p>{{item.description }}</p>
+                            </mat-card-content>
+                            <mat-card-footer class="justify-content-end">
+                                <button mat-raised-button>Watch</button>
+                            </mat-card-footer>
+                        </mat-card>
+                    </div>
+                </div>
+            </section>
+        </mat-sidenav-content>
+    </mat-sidenav-container>
+
+</ng-container>

@@ -1,0 +1,27 @@
+<div class="row ">
+    <mat-toolbar class="flex-container">
+        <div>
+            <img height="40" src="../../../assets/images/appLogo.png" class="m-2">
+        </div>
+        <div>
+            <button class="search-icon" mat-icon-button disabled>
+                <mat-icon>search</mat-icon>
+            </button>
+            <mat-form-field>
+                <input matInput name="searchText" type="text" [(ngModel)]="searchText">
+            </mat-form-field>
+            <button mat-button mat-icon-button (click)="clear()">
+                <mat-icon>close</mat-icon>
+            </button>
+        </div>
+        <div>
+            <button mat-raised-button color="primary" class="m-2" (click)="logoutClicked()">
+                Logout
+            </button>
+            <button mat-raised-button color="primary" class="m-2">
+                My Cart
+                <span class="material-icons">shopping_cart</span>
+            </button>
+        </div>
+    </mat-toolbar>
+</div>
