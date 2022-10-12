@@ -22,9 +22,9 @@
 
   
 #mat-card-image {
-    min-height: 150px;
-    max-height: 150px;
-    min-width: 100px;
+     
+    max-height: 250px;
+  
     max-width: 100px;
     margin: 20px;
 }

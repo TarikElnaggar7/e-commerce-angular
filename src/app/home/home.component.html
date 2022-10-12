@@ -44,19 +44,19 @@
         <mat-sidenav-content [formGroup]="options">
             <section id="products">
                 <div class="row col-md-12">
-                    <div class="col-md-4 " *ngFor="let item of filteredProducts">
+                    <div class="col-md-4 " *ngFor="let item of filteredProducts; let i = index">
                         <mat-card class="example-card">
                             <mat-card-header>
                                 <div mat-card-avatar class="example-header-image"></div>
                                 <mat-card-title>{{item.title | slice:0:20}}</mat-card-title>
                                 <mat-card-subtitle>{{item.category}}</mat-card-subtitle>
                             </mat-card-header>
-                            <img id="mat-card-image" src="{{item.image}}">
+                            <img id="mat-card-image" src="{{item.images[0]}}">
                             <mat-card-content>
                                 <p>{{item.description }}</p>
                             </mat-card-content>
                             <mat-card-footer class="justify-content-end">
-                                <button mat-raised-button>Watch</button>
+                                <button mat-raised-button [routerLink]="['/productDetails' , item.id]">Watch</button>
                             </mat-card-footer>
                         </mat-card>
                     </div>

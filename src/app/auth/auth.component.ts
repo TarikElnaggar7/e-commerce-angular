@@ -19,8 +19,8 @@ export class AuthComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute
   ) {
-    this.mail = 'john@mail.com';
-    this.password = 'changeme';
+    this.mail = 'marklyan@gmail.com';
+    this.password = 'simple_password';
   }
 
   ngOnInit() {
@@ -29,10 +29,13 @@ export class AuthComponent implements OnInit {
 
   submit() {
     this.toastr.clear();
-    if (this.mail == 'john@mail.com' && this.password == 'changeme') {
+    if (
+      this.mail == 'marklyan@gmail.com' &&
+      this.password == 'simple_password'
+    ) {
       this.authService.login(this.mail, this.password).subscribe((response) => {
         this.toastr.success('Login succes and token was saved in localStorage');
-        sessionStorage.setItem('Token', response.access_token);
+        sessionStorage.setItem('Token', response.data.access_token);
         setTimeout(() => {
           this.router.navigateByUrl('/home');
         }, 300);
@@ -42,8 +45,8 @@ export class AuthComponent implements OnInit {
       this.toastr.error(
         'please use the default values of username and password'
       );
-      this.mail = 'john@mail.com';
-      this.password = 'changeme';
+      this.mail = 'marklyan@gmail.com';
+      this.password = 'simple_password';
     }
   }
 }

@@ -10,10 +10,11 @@ import { HomeService } from './home.service';
 export class HomeComponent implements OnInit {
   AllProducts: any;
   categories = [
-    { name: "men's clothing", checked: false },
-    { name: 'electronics', checked: false },
-    { name: 'jewelery', checked: false },
-    { name: "women's clothing", checked: false },
+    { name: 'smartphones', checked: false },
+    { name: 'laptops', checked: false },
+    { name: 'skincare', checked: false },
+    { name: 'home-decoration', checked: false },
+    { name: 'groceries', checked: false },
   ];
   prices = [
     { name: '0 --> 50', value: '50', checked: false },
@@ -65,13 +66,11 @@ export class HomeComponent implements OnInit {
         this.filteredProducts = this.AllProducts;
       }
     });
-    // if (this.filteredProducts.length <= 0) {
-    // }
   }
 
   ngOnInit(): void {
-    this.homeService.getAllItems().subscribe((response) => {
-      this.AllProducts = response;
+    this.homeService.getAllItems().subscribe((response: any) => {
+      this.AllProducts = response.products;
       this.filteredProducts = this.AllProducts;
     });
   }

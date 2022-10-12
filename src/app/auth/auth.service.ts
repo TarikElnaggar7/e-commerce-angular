@@ -13,7 +13,7 @@ export class AuthService {
   }
 
   login(email: string, password: string): Observable<any> {
-    return this.http.post('https://api.escuelajs.co/api/v1/auth/login', {
+    return this.http.post('https://api.storerestapi.com/auth/login', {
       email: email,
       password: password,
     });
